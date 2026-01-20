@@ -4,6 +4,7 @@ from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (accuracy_score, roc_auc_score, precision_score, recall_score, f1_score, matthews_corrcoef)
 from pathlib import Path
+import joblib
 
 #Dataset Path
 path = Path.cwd() /"data"/"processed_weather_dataset.csv" 
@@ -44,3 +45,8 @@ print("Precision :", precision_score(y_test, y_pred, average="weighted"))
 print("Recall :", recall_score(y_test, y_pred, average="weighted"))
 print("F1 :", f1_score(y_test, y_pred, average="weighted"))
 print("MCC :", matthews_corrcoef(y_test, y_pred))
+
+#Extraction of Model(PKL)
+modelpath = Path.cwd() /"model"/"XGBoost.pkl"
+joblib.dump(model,modelpath)
+print("Model saved!!!")
