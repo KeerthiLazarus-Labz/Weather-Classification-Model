@@ -4,6 +4,7 @@
 The objective of this project is to build a machine learning model capable of classifying weather conditions based on meteorological data. By analyzing features such as temperature, humidity, precipitation, and wind speed, the model aims to predict the severity or type of weather conditions. This classification helps in understanding weather patterns and can be used for various forecasting and planning applications.
 
 ## b. Dataset Description
+Dataset Source : "https://www.kaggle.com/datasets/yug201/daily-climate-time-series-data-delhi-india"
 The dataset used in this project contains weather information with the following characteristics:
 - **Total Rows:** 3557
 - **Total Features:** 15 (after processing)
@@ -32,7 +33,7 @@ Six different machine learning models were implemented and evaluated on the data
 ### Comparison Table
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Logistic Regression | 0.7893 | 0.9358 | 0.7870 | 0.7893 | 0.7868 | 0.6817 |
+| Logistic Regression | 0.7907 | 0.9364 | 0.7892 | 0.7907 | 0.7889 | 0.6837 |
 | Decision Tree | 0.7781 | 0.9102 | 0.7754 | 0.7781 | 0.7762 | 0.6640 |
 | kNN | 0.7978 | 0.9115 | 0.7924 | 0.7978 | 0.7943 | 0.6934 |
 | Naive Bayes | 0.7374 | 0.9203 | 0.7554 | 0.7374 | 0.7387 | 0.6114 |

@@ -2,3 +2,6 @@ pandas
 scikit-learn
 seaborn
 matplotlib
+streamlit
+joblib
+xgboost
