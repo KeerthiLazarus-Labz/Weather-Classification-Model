@@ -4,7 +4,7 @@ import joblib
 from pathlib import Path
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import requests
 from sklearn.metrics import (
     accuracy_score, precision_score, recall_score,
     f1_score, matthews_corrcoef, confusion_matrix,
@@ -46,9 +46,19 @@ with st.sidebar:
         help="Select the machine learning models you want to evaluate on the uploaded test dataset."
     )
 
-# TOP BAR – DATASET TOOLS
-st.markdown("### Test Dataset")
+st.markdown("""
+    <style>
+        /* Target all download buttons */
+        div[data-testid="stDownloadButton"] button {
+            padding: 2px 6px !important;
+            font-size: 8px !important;
+            border-radius: 3px !important;
+            height: 20px !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
+# TOP BAR – DATASET TOOLS
 top_left, top_right = st.columns([1, 2])
 
 with top_left:
@@ -65,10 +75,22 @@ with top_left:
     }
 
     for name, file_name in TEST_FILES.items():
-        st.markdown(
-            f"[📥 {name}](https://raw.githubusercontent.com/KeerthiLazarus-Labz/Weather-Classification-Model/main/data/{file_name})"
+
+        file_url = (
+            f"https://raw.githubusercontent.com/"
+            f"KeerthiLazarus-Labz/Weather-Classification-Model/main/data/{file_name}"
         )
 
+        file_bytes = requests.get(file_url).content
+
+        st.download_button(
+            label=f"📥 {name}",
+            data=file_bytes,
+            file_name=file_name,
+            mime="text/csv",
+            key=file_name,
+        )
+        
 with top_right:
     st.markdown("**📤 Upload Test CSV**")
     uploaded_file = st.file_uploader(
